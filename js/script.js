@@ -332,7 +332,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             `;
-            this.parent.append(element);
+            this.parent.append(element); 
         }
     }
 
