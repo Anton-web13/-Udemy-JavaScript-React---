@@ -233,11 +233,11 @@ window.addEventListener('DOMContentLoaded', () => {
     // console.log(double(3));
     // console.log(double(13));
 
-    // const btn = document.querySelector('button');
+    const btn = document.querySelector('button');
 
-    // btn.addEventListener('click', function() {
-    //     this.style.backgroundColor = 'blue';
-    // });
+    btn.addEventListener('click', function() {
+        this.style.backgroundColor = 'blue';
+    });
 
     // const obj1 = {
     //     name: 5,
