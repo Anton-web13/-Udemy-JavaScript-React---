@@ -81,7 +81,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 seconds.innerHTML = "00";
             }
         }
-    }  
+    }
 
     // const box = document.querySelector('.container');
 
