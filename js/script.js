@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // timer
 
-    const deadline = '2022-02-08 18:00';
+    const deadline = '2022-02-26 14:10';
 
     function setClock(selector, endtime) {
         const timer = document.querySelector(selector),
@@ -84,23 +84,22 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    const box = document.querySelector('.container');
+    // const box = document.querySelector('.container');
 
-    const width = box.scrollWidth;
-    const height = box.scrollHeight;
+    // const width = box.scrollWidth;
+    // const height = box.scrollHeight;
 
-    console.log(width, height);
+    // console.log(width, height);
 
+    // console.log(box.getBoundingClientRect().top);
 
-    console.log(box.getBoundingClientRect().top);
+    // const style = window.getComputedStyle(box);
 
-    const style = window.getComputedStyle(box);
+    // console.log(style.display);
 
-    console.log(style.display);
+    // const styles = document.body;
 
-    const styles = document.body;
-
-    console.log(document.documentElement.scrollTop);
+    // console.log(document.documentElement.scrollTop);
 
     setClock('.timer', deadline);
 
@@ -299,15 +298,16 @@ window.addEventListener('DOMContentLoaded', () => {
     // console.log(square.calcArea());
 
 
-    // Использовать классы для карточек
+    // // Использовать классы для карточек
 
     class MenuCard {
-        constructor(src, alt, title, description, price, parentSelector) {
+        constructor(src, alt, title, description, price, parentSelector, ...classes) {
             this.src = src;
             this.alt = alt;
             this.title = title;
             this.description = description;
             this.price = price;
+            this.classes = classes;  // это массив
             this.parent = document.querySelector(parentSelector);
             this.transfer = 27;
             this.changeToUAH();
@@ -320,16 +320,22 @@ window.addEventListener('DOMContentLoaded', () => {
         render() {
             // this.changeToUAH();
             const element = document.createElement('div');
+
+            if (this.classes.length === 0) {
+                this.element = "menu__item";
+                element.classList.add(this.element);
+            } else {
+                this.classes.forEach(className => element.classList.add(className));
+            }
+
             element.innerHTML = `
-                <div class="menu__item">
-                    <img src=${this.src} alt=${this.alt}>
-                    <h3 class="menu__item-subtitle">${this.title}"</h3>
-                    <div class="menu__item-descr">${this.description}</div>
-                    <div class="menu__item-divider"></div>
-                    <div class="menu__item-price">
-                        <div class="menu__item-cost">Цена:</div>
-                        <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
-                    </div>
+                <img src=${this.src} alt=${this.alt}>
+                <h3 class="menu__item-subtitle">${this.title}"</h3>
+                <div class="menu__item-descr">${this.description}</div>
+                <div class="menu__item-divider"></div>
+                <div class="menu__item-price">
+                    <div class="menu__item-cost">Цена:</div>
+                    <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
                 </div>
             `;
             this.parent.append(element); 
@@ -342,7 +348,9 @@ window.addEventListener('DOMContentLoaded', () => {
         'Меню "Фитнес"',
         'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
         9,
-        ".menu .container"
+        ".menu .container",
+        // 'menu__item',
+        // 'big'
     ).render();
 
     new MenuCard(
@@ -351,7 +359,8 @@ window.addEventListener('DOMContentLoaded', () => {
         'Меню "“Премиум”"',
         'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное исполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
         14,
-        ".menu .container"
+        ".menu .container",
+        'menu__item',
     ).render();
 
     new MenuCard(
@@ -360,7 +369,33 @@ window.addEventListener('DOMContentLoaded', () => {
         'Меню "Постное"',
         'Меню “Постное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков.',
         21,
-        ".menu .container"
+        ".menu .container",
+        'menu__item'
     ).render();
+
+
+
+    // Rest
+
+    const log = function(a, b, ...haha) {
+        console.log(a, b, haha);   
+        console.log(haha);
+    }
+
+    log("basic", 'rest', 'operator', 'usage');
+
+
+    // По умолчанию
+
+    function calcOrDouble(number, basis = 2) {
+        // basis = basis || 2;
+        console.log(number * basis);
+    }   
+
+    // calcOrDouble(3, 5);
+    calcOrDouble(3);
+
+
+
 
 });
