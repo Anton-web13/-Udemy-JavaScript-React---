@@ -83,7 +83,6 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
     // const box = document.querySelector('.container');
 
     // const width = box.scrollWidth;
