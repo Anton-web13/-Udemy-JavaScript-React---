@@ -122,7 +122,7 @@ window.addEventListener('DOMContentLoaded', () => {
         modal.classList.add('show');
         modal.classList.remove('hide');
         document.body.style.overflow = "hidden";
-        clearInterval(modalTimerId);
+        // clearInterval(modalTimerId);
     }
 
     function closeModal() {
@@ -393,6 +393,30 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // calcOrDouble(3, 5);
     calcOrDouble(3);
+
+
+    // JSON
+
+    const persone = {
+        alex: 'Alex',
+        tel: '+744444444',
+        parents: {
+            mom: 'Olga',
+            dad: 'Mike'
+        }
+    };
+
+    // console.log(JSON.stringify(persone));
+    // console.log(JSON.parse(JSON.stringify(persone)));
+
+    const clone = JSON.parse(JSON.stringify(persone));
+    // console.log(clone);
+
+    clone.parents.mom = "POP";
+
+    console.log(persone);
+    console.log(clone);
+
 
 
 
