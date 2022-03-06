@@ -418,7 +418,51 @@ window.addEventListener('DOMContentLoaded', () => {
     console.log(clone);
 
 
+    const inputRub = document.querySelector('#rub'),
+          inputUsd = document.querySelector('#usd');
 
+
+    inputRub.addEventListener('input', () => {
+        const request = new XMLHttpRequest();
+
+        // request.open(method, url, async, login, pass);
+        request.open('GET', "js/current.json", true);
+        request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        request.send();
+
+        // status
+        // ststusText
+        // response
+        // readyState
+        
+
+        // readystatechange
+
+        // request.addEventListener('readystatechange', () => { //отслеживает статус готовности запроса
+        //     if (request.readyState === 4 && request.status === 200) {
+        //         console.log(request.response);
+        //         const data = JSON.parse(request.response);
+        //         inputUsd.value = (+inputRub.value / data.current.usd).toFixed(2);
+        //     } else {
+        //         inputUsd.value = "Что-то пошло не так!";
+        //     }
+
+        // });
+
+
+        // load
+
+        request.addEventListener('load', () => { //отслеживает статус готовности запроса
+            if (request.status === 200) {
+                console.log(request.response);
+                const data = JSON.parse(request.response);
+                inputUsd.value = (+inputRub.value / data.current.usd).toFixed(2);
+            } else {
+                inputUsd.value = "Что-то пошло не так!";
+            }
+
+        });
+    });
 
 
 });
