@@ -602,21 +602,21 @@ window.addEventListener('DOMContentLoaded', () => {
     // }, 2000);
 
 
-    console.log('Запрос данных...');
+    // console.log('Запрос данных...');
 
-    const req = new Promise(function(resolve, reject) {
-        setTimeout(() => {
-            console.log('Подготовка данных...');
+    // const req = new Promise(function(resolve, reject) {
+    //     setTimeout(() => {
+    //         console.log('Подготовка данных...');
     
-            const product = {
-                name: 'TV',
-                price: 2000
-            };
+    //         const product = {
+    //             name: 'TV',
+    //             price: 2000
+    //         };
     
-           resolve(product);
+    //        resolve(product);
 
-        }, 2000);
-    });
+    //     }, 2000);
+    // });
 
     // req.then((product) => {
         // setTimeout(() => {
@@ -625,42 +625,104 @@ window.addEventListener('DOMContentLoaded', () => {
         // }, 2000);
     // });
 
-    req.then((product) => {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                product.status = 'order';
-                resolve(product);
-                // reject();
-            }, 2000);
-        });
-    }).then(data => {
-        data.modify = true;
-        return data;
-    }).then((data) => {
-        console.log(data);
-    }).catch(() => {
-        console.error('Произошла ошибка');
-    }).finally(() => {
-        console.log('Finally');
-    });
+    // req.then((product) => {
+    //     return new Promise((resolve, reject) => {
+    //         setTimeout(() => {
+    //             product.status = 'order';
+    //             resolve(product);
+    //             // reject();
+    //         }, 2000);
+    //     });
+    // }).then(data => {
+    //     data.modify = true;
+    //     return data;
+    // }).then((data) => {
+    //     console.log(data);
+    // }).catch(() => {
+    //     console.error('Произошла ошибка');
+    // }).finally(() => {
+    //     console.log('Finally');
+    // });
     
 
-    const test = time => {
-        return new Promise((resolve) => {
-            setTimeout(() => resolve(), time);
-        });
-    };
+    // const test = time => {
+    //     return new Promise((resolve) => {
+    //         setTimeout(() => resolve(), time);
+    //     });
+    // };
 
     // test(1000).then(() => console.log('1000 ms'));
     // test(2000).then(() => console.log('2000 ms'));
 
-    Promise.all([test(1000), test(6000)]).then(() => {
-        console.log('All');
+    // Promise.all([test(1000), test(6000)]).then(() => {
+    //     console.log('All');
+    // });
+
+    // Promise.race([test(1000), test(6000)]).then(() => {
+    //     console.log('Race');
+    // });
+
+
+
+    // filter
+
+
+    const names = ['Ivan', 'Ann', 'Ksenia', 'Voldemart'];
+
+    const shortNames = names.filter(function(name) {
+        return name.length < 5;
     });
 
-    Promise.race([test(1000), test(6000)]).then(() => {
-        console.log('Race');
-    });
+    console.log(shortNames);
+
+
+    // map
+
+
+    // const answers = ['IvAn', 'AnnA', 'Hello'];
+
+    // const result = answers.map(item => item.toLocaleLowerCase());
+    // // const resultq = answers.map(item => item.toLocaleUpperCase());
+
+    // console.log(result);
+
+    let answers = ['IvAn', 'AnnA', 'Hello'];
+
+    // const result = answers.map(item => item.toLocaleLowerCase());
+    // const resultq = answers.map(item => item.toLocaleUpperCase());
+
+    answers = answers.map(item => item.toLocaleLowerCase());
+
+    console.log(answers);
+
+
+
+    // every/some
+
+
+    const some = [4, "5", "7"];
+
+    console.log(some.some(item => typeof(item) === 'number'));  // nur eine
+
+    console.log(some.every(item => typeof(item) === 'number'));  // alle
+
+
+    
+    //  reduce
+
+    let arr = [4, 5, 1, 3, 2, 6];
+    
+    let i = 0;
+    var sum = 0;
+
+    for( i = 0; i < arr.length; i++ ) {
+        sum+=arr[i];
+    };
+
+    console.log(sum);
+
+
+
 
 
 });
